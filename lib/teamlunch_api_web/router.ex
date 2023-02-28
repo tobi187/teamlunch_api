@@ -3,10 +3,29 @@ defmodule TeamlunchApiWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug OpenApiSpex.Plug.PutApiSpec, module: TeamlunchApiWeb.ApiSpec
   end
 
-  scope "/api", TeamlunchApiWeb do
+  scope "/api" do
     pipe_through :api
+    get "/openapi", OpenApiSpex.Plug.RenderSpec, []
+
+    scope "/users", TeamlunchApiWeb do
+      get "/login", UserController, :login
+      get "/register", UserController, :register
+    end
+
+    scope "/event", TeamlunchApiWeb do
+      get "/events", EventController, :events
+      get "/create", EventController, :create
+      get "/:eventId", EventController, :abc
+      get "/add/:eventId", EventController, :bcd
+      get "/order/:eventId", EventController, :bcd
+    end
+  end
+
+  scope "/" do
+    get "/swaggerui", OpenApiSpex.Plug.SwaggerUI, path: "/api/openapi"
   end
 
   # Enables LiveDashboard only for development

@@ -14,6 +14,8 @@ config :teamlunch_api, TeamlunchApiWeb.Endpoint,
   pubsub_server: TeamlunchApi.PubSub,
   live_view: [signing_salt: "mmTmxiJ1"]
 
+config :open_api_spex, :cache_adapter, OpenApiSpex.Plug.NoneCache
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails
