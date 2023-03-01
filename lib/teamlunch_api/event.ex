@@ -1,4 +1,8 @@
 defmodule TeamlunchApi.Event do
+  def get_details(evId) do
+    CubDB.get(CubDB, evId)
+  end
+
   def order(evId, map) do
     userid = Map.get(map, "userId")
     CubDB.put(CubDB, {evId, userid}, map)
