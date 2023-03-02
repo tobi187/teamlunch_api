@@ -17,10 +17,10 @@ defmodule TeamlunchApiWeb.Router do
 
     scope "/event", TeamlunchApiWeb do
       get "/events", EventController, :events
-      get "/create", EventController, :create
+      post "/create", EventController, :create
       get "/:eventId", EventController, :abc
       get "/add/:eventId", EventController, :bcd
-      get "/order/:eventId", EventController, :order
+      post "/order/:eventId", EventController, :order
     end
   end
 

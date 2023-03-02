@@ -42,7 +42,9 @@ defmodule TeamlunchApi.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:cubdb, "~> 2.0.2"},
-      {:open_api_spex, "~> 3.16"}
+      {:open_api_spex, "~> 3.16"},
+      {:plug, "~> 1.0"},
+      {:corsica, "~> 1.0"}
     ]
   end
 

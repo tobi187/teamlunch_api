@@ -26,8 +26,8 @@ defmodule TeamlunchApiWeb.EventController do
       ok: {"Success", @json, EventsSchema.CreateRes}
     ]
 
-  def create(conn, params) do
-    ev = Events.create_event(params)
+  def create(conn, %{"details" => details} = _params) do
+    ev = Events.create_event(details)
     json(conn, ev)
   end
 

@@ -10,6 +10,8 @@ defmodule TeamlunchApiWeb.Endpoint do
     signing_salt: "dzWQy+m9"
   ]
 
+  plug Corsica, origins: "*"
+
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
 
   # Serve at "/" the static files from "priv/static" directory.
@@ -41,6 +43,7 @@ defmodule TeamlunchApiWeb.Endpoint do
     json_decoder: Phoenix.json_library()
 
   plug Plug.MethodOverride
+
   plug Plug.Head
   plug Plug.Session, @session_options
   plug TeamlunchApiWeb.Router
