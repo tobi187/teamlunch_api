@@ -10,7 +10,7 @@ defmodule TeamlunchApiWeb.Endpoint do
     signing_salt: "dzWQy+m9"
   ]
 
-  plug Corsica, origins: "*"
+  plug Corsica, origins: "*", allow_headers: ["content-type"]
 
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
 
