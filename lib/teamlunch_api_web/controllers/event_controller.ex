@@ -27,14 +27,14 @@ defmodule TeamlunchApiWeb.EventController do
     ]
 
   def create(conn, %{"details" => details} = _params) do
-    ev = Events.create_event(details)
-    json(conn, ev)
+    evId = Events.create_event(details)
+    json(conn, %{status: "success", eventId: evId})
   end
 
   operation :order,
     summary: "Create Order",
-    properties: [
-      eventId: [in: :path, required: true]
+    parameters: [
+      eventId: [in: :path,type: :integer, required: true]
     ],
     request_body: {"Order Details", @json, EventsSchema.OrderReq, required: true}
 

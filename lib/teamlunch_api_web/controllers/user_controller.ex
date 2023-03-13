@@ -8,8 +8,8 @@ defmodule TeamlunchApiWeb.UserController do
 
   operation :login,
     summary: "Login",
-    properties: %{
-      name: [in: :query, description: "username", required: true]
+    parameters: %{
+      name: [in: :query, description: "username", type: :string, required: true]
     },
     responses: [
       ok: {"Login Response", @json, UserSchema.LoginRes}
@@ -26,9 +26,9 @@ defmodule TeamlunchApiWeb.UserController do
 
   operation :register,
     summary: "Register",
-    properties: %{
-      name: [in: :query, description: "username", required: true],
-      mail: [in: :query, description: "email"]
+    parameters: %{
+      name: [in: :query, type: :string, description: "username", required: true],
+      mail: [in: :query, type: :string, description: "email"]
     },
     responses: [
       ok: {"Login Response", @json, UserSchema.LoginRes}

@@ -16,5 +16,6 @@ defmodule TeamlunchApi.Events do
       end)
 
     CubDB.put(CubDB, {:events, event_id}, m)
+    event_id
   end
 end
